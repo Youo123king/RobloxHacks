@@ -1,0 +1,106 @@
+-- سكربت متكامل مع قائمة GUI للعبة Roblox
+-- تأكد من استخدام Executor متوافق مثل Delta أو KRNL
+
+local player = game.Players.LocalPlayer
+local character = player.Character or player.CharacterAdded:Wait()
+local humanoid = character:WaitForChild("Humanoid")
+
+-- إعداد الخصائص الافتراضية
+local flying = false
+local walkSpeed = 16
+local jumpPower = 50
+local infiniteJump = false
+local invisible = false
+local sizeScale = 1
+
+-- دالة الطيران
+local bodyVelocity = Instance.new("BodyVelocity")
+bodyVelocity.MaxForce = Vector3.new(40000, 40000, 40000)
+bodyVelocity.Velocity = Vector3.new(0, 0, 0)
+bodyVelocity.Parent = character.HumanoidRootPart
+
+function toggleFly()
+    flying = not flying
+    if flying then
+        bodyVelocity.Velocity = Vector3.new(0, 50, 0)
+    else
+        bodyVelocity.Velocity = Vector3.new(0, 0, 0)
+    end
+end
+
+-- دالة التحكم في السرعة
+function setWalkSpeed(speed)
+    humanoid.WalkSpeed = speed
+end
+
+-- دالة التحكم في قوة القفز
+function setJumpPower(power)
+    humanoid.JumpPower = power
+end
+
+-- دالة القفز اللانهائي
+game:GetService("UserInputService").JumpRequest:Connect(function()
+    if infiniteJump and humanoid then
+        humanoid:ChangeState(Enum.HumanoidStateType.Jumping)
+    end
+end)
+
+-- دالة الاختفاء
+function toggleInvisible()
+    invisible = not invisible
+    for _, part in pairs(character:GetChildren()) do
+        if part:IsA("BasePart") then
+            part.Transparency = invisible and 1 or 0
+            part.CanCollide = not invisible
+        end
+    end
+end
+
+-- دالة لتغيير الحجم
+function changeSize(scale)
+    for _, part in pairs(character:GetDescendants()) do
+        if part:IsA("BasePart") then
+            part.Size = part.Size * scale
+        end
+    end
+end
+
+-- إعداد واجهة المستخدم GUI
+local ScreenGui = Instance.new("ScreenGui")
+local Frame = Instance.new("Frame")
+
+-- أزرار
+local FlyButton = Instance.new("TextButton")
+local SpeedButton = Instance.new("TextButton")
+local JumpButton = Instance.new("TextButton")
+local InfiniteJumpButton = Instance.new("TextButton")
+local InvisibleButton = Instance.new("TextButton")
+local SizeButton = Instance.new("TextButton")
+
+ScreenGui.Parent = game.CoreGui
+
+Frame.Parent = ScreenGui
+Frame.BackgroundColor3 = Color3.new(0, 0, 0)
+Frame.Size = UDim2.new(0, 200, 0, 300)
+Frame.Position = UDim2.new(0.1, 0, 0.1, 0)
+
+local buttons = {
+    {FlyButton, "Toggle Fly", function() toggleFly() end},
+    {SpeedButton, "Increase Speed", function() setWalkSpeed(50) end},
+    {JumpButton, "High Jump", function() setJumpPower(100) end},
+    {InfiniteJumpButton, "Infinite Jump", function() infiniteJump = not infiniteJump end},
+    {InvisibleButton, "Toggle Invisible", function() toggleInvisible() end},
+    {SizeButton, "Increase Size", function() changeSize(1.2) end}
+}
+
+-- إعداد الأزرار
+for i, buttonData in pairs(buttons) do
+    local button, label, action = unpack(buttonData)
+    button.Parent = Frame
+    button.Text = label
+    button.Size = UDim2.new(0, 180, 0, 40)
+    button.Position = UDim2.new(0, 10, 0, (i - 1) * 50 + 10)
+    button.BackgroundColor3 = Color3.new(0.2, 0.2, 0.2)
+    button.TextColor3 = Color3.new(1, 0, 0)
+    button.MouseButton1Click:Connect(action)
+end
