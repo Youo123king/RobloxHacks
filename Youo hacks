@@ -1,0 +1,133 @@
+-- تحميل مكتبة Kavo UI Library
+local Library = loadstring(game:HttpGet("https://raw.githubusercontent.com/xHeptc/Kavo-UI-Library/main/source.lua"))()
+
+-- إنشاء نافذة جديدة
+local Window = Library.CreateLib("Hacks youo⚡🇪🇬💥", "DarkTheme")
+
+-- إظهار وإخفاء القائمة بزر "Left Control"
+game:GetService("UserInputService").InputBegan:Connect(function(input)
+    if input.KeyCode == Enum.KeyCode.LeftControl then
+        Window:ToggleUI()
+    end
+end)
+
+-- التبويب الأول: Player
+local PlayerTab = Window:NewTab("Player")
+local PlayerSection = PlayerTab:NewSection("Player Controls")
+
+PlayerSection:NewButton("Fly", "Toggle Fly Mode", function()
+    loadstring(game:HttpGet("https://pastebin.com/raw/7rXZVQnQ"))()
+end)
+
+PlayerSection:NewSlider("Speed", "Adjust WalkSpeed", 100, 16, function(value)
+    game.Players.LocalPlayer.Character.Humanoid.WalkSpeed = value
+end)
+
+PlayerSection:NewSlider("Jump", "Adjust JumpPower", 150, 50, function(value)
+    game.Players.LocalPlayer.Character.Humanoid.JumpPower = value
+end)
+
+PlayerSection:NewToggle("Infinite Jump", "Enable Infinite Jump", function(state)
+    game:GetService("UserInputService").JumpRequest:Connect(function()
+        if state then
+            game.Players.LocalPlayer.Character.Humanoid:ChangeState("Jumping")
+        end
+    end)
+end)
+
+PlayerSection:NewButton("X-ray", "Enable X-ray Vision", function()
+    loadstring(game:HttpGet("https://pastebin.com/raw/ScxAPwVH"))()
+end)
+
+PlayerSection:NewButton("ESP", "Enable ESP", function()
+    loadstring(game:HttpGet("https://pastebin.com/raw/ESpScript"))()
+end)
+
+PlayerSection:NewButton("Rejoin", "Rejoin Server", function()
+    game:GetService("TeleportService"):Teleport(game.PlaceId, game.Players.LocalPlayer)
+end)
+
+PlayerSection:NewButton("Day", "Set Time to Day", function()
+    game.Lighting.TimeOfDay = "12:00:00"
+end)
+
+PlayerSection:NewButton("Night", "Set Time to Night", function()
+    game.Lighting.TimeOfDay = "00:00:00"
+end)
+
+-- التبويب الثاني: Maps
+local MapsTab = Window:NewTab("Maps")
+local MapsSection = MapsTab:NewSection("Teleport to Maps")
+
+local maps = {
+    {name = "Brookhaven", placeId = 4924922222},
+    {name = "Blox Fruit", placeId = 2753915549},
+    {name = "King Legacy", placeId = 4520749081},
+    {name = "Tower of Hell", placeId = 1962086868},
+    {name = "Evade", placeId = 9872472334},
+    {name = "Clone Tycoon", placeId = 11522998470},
+    {name = "Build A Boat", placeId = 537413528},
+    {name = "Murder Mystery", placeId = 142823291}
+}
+
+for _, map in pairs(maps) do
+    MapsSection:NewButton(map.name, "Teleport to " .. map.name, function()
+        game:GetService("TeleportService"):Teleport(map.placeId, game.Players.LocalPlayer)
+    end)
+end
+
+-- التبويب الثالث: Hubs
+local HubsTab = Window:NewTab("Hub")
+local HubsSection = HubsTab:NewSection("Script Hubs")
+
+HubsSection:NewButton("Delta", "Execute Delta Script", function()
+    loadstring(game:HttpGet("https://raw.githubusercontent.com/DeltaHubScript/main.lua"))()
+end)
+
+HubsSection:NewButton("Arceus X", "Execute Arceus X Script", function()
+    loadstring(game:HttpGet("https://raw.githubusercontent.com/ArceusX/main.lua"))()
+end)
+
+HubsSection:NewButton("Fulux", "Execute Fulux Script", function()
+    loadstring(game:HttpGet("https://raw.githubusercontent.com/FuluxHub/main.lua"))()
+end)
+
+HubsSection:NewButton("Codex", "Execute Codex Script", function()
+    loadstring(game:HttpGet("https://raw.githubusercontent.com/CodexHub/main.lua"))()
+end)
+
+HubsSection:NewButton("Hydrogen", "Execute Hydrogen Script", function()
+    loadstring(game:HttpGet("https://raw.githubusercontent.com/HydrogenHub/main.lua"))()
+end)
+
+-- التبويب الرابع: Trolling
+local TrollingTab = Window:NewTab("Trolling")
+local TrollingSection = TrollingTab:NewSection("Troll Players")
+
+TrollingSection:NewButton("Control Player", "Control another player", function()
+    loadstring(game:HttpGet("https://pastebin.com/raw/ControlPlayer"))()
+end)
+
+TrollingSection:NewButton("Bring", "Bring player to you", function()
+    -- أكواد bring player
+end)
+
+TrollingSection:NewButton("Fling", "Fling player", function()
+    -- أكواد fling player
+end)
+
+TrollingSection:NewButton("Teleport Player", "Teleport to player", function()
+    -- أكواد teleport player
+end)
+
+TrollingSection:NewButton("Hide Seat", "Hide in a seat", function()
+    -- أكواد hide seat
+end)
+
+-- التبويب الخامس: Creator
+local CreatorTab = Window:NewTab("Creator")
+local CreatorSection = CreatorTab:NewSection("Script Creator")
+
+CreatorSection:NewLabel("Created by Youo ⚡🇪🇬💥")
+
+print("Script loaded successfully!")
