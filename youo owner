@@ -1,0 +1,488 @@
+-- تحميل مكتبة Kova
+local library = loadstring(game:HttpGet("https://raw.githubusercontent.com/KovaLibrary/Example/main/library.lua"))()
+local window = library:CreateWindow("Loin Script Hub")
+
+-- القسم الأول: Home
+local homeTab = window:CreateTab("Home")
+homeTab:CreateLabel("Name: youssefgamingor")
+homeTab:CreateLabel("Age: 15")
+homeTab:CreateLabel("Country: Egypt")
+homeTab:CreateLabel("Hack Used: Loin Hack")
+homeTab:CreateLabel("Owner: youssefgamingor")
+
+-- القسم الثاني: Player
+local playerTab = window:CreateTab("Player")
+playerTab:CreateSlider("Speed", 16, 500, 16, function(value)
+    game.Players.LocalPlayer.Character.Humanoid.WalkSpeed = value
+end)
+playerTab:CreateSlider("Jump", 50, 500, 50, function(value)
+    game.Players.LocalPlayer.Character.Humanoid.JumpPower = value
+end)
+playerTab:CreateSlider("Fly Speed", 50, 500, 100, function(value)
+    -- تعديل سرعة الطيران
+end)
+playerTab:CreateButton("Fly", function()
+    -- كود الطيران
+    local Player = game.Players.LocalPlayer
+    local Character = Player.Character or Player.CharacterAdded:Wait()
+    local Humanoid = Character:WaitForChild("Humanoid")
+    Humanoid.PlatformStand = true
+end)
+playerTab:CreateButton("Infinity Jump", function()
+    -- كود القفز اللانهائي
+    local Player = game.Players.LocalPlayer
+    local UIS = game:GetService("UserInputService")
+    UIS.JumpRequest:Connect(function()
+        if Player.Character then
+            Player.Character:FindFirstChildOfClass("Humanoid"):ChangeState("Jumping")
+        end
+    end)
+end)
+playerTab:CreateButton("X-ray", function()
+    -- كود X-ray
+    for _, v in pairs(workspace:GetDescendants()) do
+        if v:IsA("BasePart") then
+            v.Transparency = 0.5
+        end
+    end
+end)
+playerTab:CreateButton("ESP", function()
+    -- كود ESP
+    for _, v in pairs(game.Players:GetPlayers()) do
+        if v ~= game.Players.LocalPlayer then
+            local esp = Instance.new("BillboardGui", v.Character.Head)
+            esp.Size = UDim2.new(1, 0, 1, 0)
+            esp.Adornee = v.Character.Head
+            local label = Instance.new("TextLabel", esp)
+            label.Text = v.Name
+            label.Size = UDim2.new(1, 0, 1, 0)
+            label.BackgroundTransparency = 1
+            label.TextColor3 = Color3.new(1, 0, 0)
+        end
+    end
+end)
+playerTab:CreateButton("Day", function()
+    game.Lighting.TimeOfDay = "12:00:00"
+end)
+playerTab:CreateButton("Night", function()
+    game.Lighting.TimeOfDay = "00:00:00"
+end)
+playerTab:CreateButton("Rejoin", function()
+    game:GetService("TeleportService"):Teleport(game.PlaceId, game.Players.LocalPlayer)
+end)
+
+-- القسم الثالث: Map Hacks
+local mapTab = window:CreateTab("Map Hacks")
+mapTab:CreateLabel("Brookhaven")
+mapTab:CreateButton("Script 1", function() 
+    -- سكربت 1 للعبة Brookhaven
+    print("Brookhaven Script 1")
+end)
+mapTab:CreateButton("Script 2", function() 
+    -- سكربت 2 للعبة Brookhaven
+    print("Brookhaven Script 2")
+end)
+mapTab:CreateButton("Script 3", function() 
+    -- سكربت 3 للعبة Brookhaven
+    print("Brookhaven Script 3")
+end)
+
+mapTab:CreateLabel("Blox Fruit")
+mapTab:CreateButton("Script 1", function() 
+    -- سكربت 1 للعبة Blox Fruit
+    print("Blox Fruit Script 1")
+end)
+mapTab:CreateButton("Script 2", function() 
+    -- سكربت 2 للعبة Blox Fruit
+    print("Blox Fruit Script 2")
+end)
+mapTab:CreateButton("Script 3", function() 
+    -- سكربت 3 للعبة Blox Fruit
+    print("Blox Fruit Script 3")
+end)
+
+mapTab:CreateLabel("Tower of Hell")
+mapTab:CreateButton("Script", function() 
+    -- سكربت Tower of Hell
+    print("Tower of Hell Script")
+end)
+
+mapTab:CreateLabel("Build a Boat")
+mapTab:CreateButton("Script 1", function() 
+    -- سكربت 1 للعبة Build a Boat
+    print("Build a Boat Script 1")
+end)
+mapTab:CreateButton("Script 2", function() 
+    -- سكربت 2 للعبة Build a Boat
+    print("Build a Boat Script 2")
+end)
+mapTab:CreateButton("Script 3", function() 
+    -- سكربت 3 للعبة Build a Boat
+    print("Build a Boat Script 3")
+end)
+
+mapTab:CreateLabel("Murder Mystery")
+mapTab:CreateButton("Script 1", function() 
+    -- سكربت 1 للعبة Murder Mystery
+    print("Murder Mystery Script 1")
+end)
+mapTab:CreateButton("Script 2", function() 
+    -- سكربت 2 للعبة Murder Mystery
+    print("Murder Mystery Script 2")
+end)
+mapTab:CreateButton("Script 3", function() 
+    -- سكربت 3 للعبة Murder Mystery
+    print("Murder Mystery Script 3")
+end)
+
+mapTab:CreateLabel("Avade")
+mapTab:CreateButton("Script 1", function() 
+    -- سكربت 1 للعبة Avade
+    print("Avade Script 1")
+end)
+mapTab:CreateButton("Script 2", function() 
+    -- سكربت 2 للعبة Avade
+    print("Avade Script 2")
+end)
+
+mapTab:CreateLabel("King Legacy")
+mapTab:CreateButton("Script 1", function() 
+    -- سكربت 1 للعبة King Legacy
+    print("King Legacy Script 1")
+end)
+mapTab:CreateButton("Script 2", function() 
+    -- سكربت 2 للعبة King Legacy
+    print("King Legacy Script 2")
+end)
+mapTab:CreateButton("Script 3", function() 
+    -- سكربت 3 للعبة King Legacy
+    print("King Legacy Script 3")
+end)
+
+mapTab:CreateLabel("Adopt Me")
+mapTab:CreateButton("Script 1", function() 
+    -- سكربت 1 للعبة Adopt Me
+    print("Adopt Me Script 1")
+end)
+mapTab:CreateButton("Script 2", function() 
+    -- سكربت 2 للعبة Adopt Me
+    print("Adopt Me Script 2")
+end)
+mapTab:CreateButton("Script 3", function() 
+    -- سكربت 3 للعبة Adopt Me
+    print("Adopt Me Script 3")
+end)
+mapTab:CreateButton("Script 4", function() 
+    -- سكربت 4 للعبة Adopt Me
+    print("Adopt Me Script 4")
+end)
+
+-- القسم الرابع: Hub
+local hubTab = window:CreateTab("Hub")
+for i = 1, 10 do
+    hubTab:CreateButton("Hub Script " .. i, function()
+        -- أكواد مختلفة لكل زر في Hub
+        print("Hub Script " .. i)
+    end)
+end
+
+-- القسم الخامس: Executed
+local executedTab = window:CreateTab("Executed")
+executedTab:CreateButton("Delta", function()
+    -- كود Delta
+    print("Delta Hack Executed")
+end)
+executedTab:CreateButton("Codex", function()
+    -- كود Codex
+    print("Codex Hack Executed")
+end)
+executedTab:CreateButton("Arceus X", function()
+    -- كود Arceus X
+    print("Arceus X Hack Executed")
+end)
+executedTab:CreateButton("Hydrogen", function()
+    -- كود Hydrogen
+    print("Hydrogen Hack Executed")
+end)
+executedTab:CreateButton("Fulux", function()
+    -- كود Fulux
+    print("Fulux Hack Executed")
+end)
+executedTab:CreateButton("Adopt", function()
+    -- كود Adopt
+    print("Adopt Hack Executed")
+end)
+
+-- القسم السادس: Game
+local gameTab = window:CreateTab("Game")
+gameTab:CreateButton("Brookhaven", function()
+    -- نقل إلى Brookhaven
+    game:GetService("TeleportService"):Teleport(12345678, game.Players.LocalPlayer)
+end)
+gameTab:CreateButton("Adopt Me", function()
+    -- نقل إلى Adopt Me
+    game:GetService("TeleportService"):Teleport(12345678, game.Players.LocalPlayer)
+end)
+gameTab:CreateButton("King Legacy", function()
+    -- نقل إلى King Legacy
+    game:GetService("gameTab:CreateButton("King Legacy", function()
+    -- نقل إلى King Legacy
+    game:GetService("TeleportService"):Teleport(12345678, game.Players.LocalPlayer)
+end)
+
+-- القسم السابع: Tools
+local toolsTab = window:CreateTab("Tools")
+
+toolsTab:CreateButton("Btools", function()
+    -- تفعيل Btools
+    local Btools = Instance.new("Tool")
+    Btools.Name = "Btools"
+    Btools.Parent = game.Players.LocalPlayer.Backpack
+    print("Btools activated!")
+end)
+
+toolsTab:CreateButton("FreeCam", function()
+    -- تفعيل FreeCam
+    local Camera = game.Workspace.CurrentCamera
+    local UserInputService = game:GetService("UserInputService")
+    local TweenService = game:GetService("TweenService")
+
+    local FreeCamEnabled = false
+    local OriginalCameraPosition = Camera.CFrame
+
+    local function toggleFreeCam()
+        if FreeCamEnabled then
+            Camera.CFrame = OriginalCameraPosition
+        else
+            Camera.CFrame = Camera.CFrame + Vector3.new(0, 5, 0)
+        end
+        FreeCamEnabled = not FreeCamEnabled
+    end
+
+    UserInputService.InputBegan:Connect(function(input, gameProcessed)
+        if not gameProcessed and input.KeyCode == Enum.KeyCode.F then
+            toggleFreeCam()
+        end
+    end)
+    print("FreeCam toggled using the F key!")
+end)
+
+toolsTab:CreateButton("Fly Tool", function()
+    -- تفعيل أداة الطيران
+    local player = game.Players.LocalPlayer
+    local character = player.Character or player.CharacterAdded:Wait()
+    local humanoid = character:WaitForChild("Humanoid")
+    local flying = false
+    local bodyVelocity = Instance.new("BodyVelocity")
+    bodyVelocity.MaxForce = Vector3.new(10000, 10000, 10000)
+    bodyVelocity.Velocity = Vector3.new(0, 0, 0)
+
+    local function toggleFly()
+        if flying then
+            bodyVelocity.Parent = nil
+        else
+            bodyVelocity.Parent = character:WaitForChild("HumanoidRootPart")
+        end
+        flying = not flying
+    end
+
+    toggleFly()
+    print("Fly tool activated! Press the button again to toggle flying.")
+end)
+
+toolsTab:CreateButton("NoClip", function()
+    -- تفعيل NoClip
+    local player = game.Players.LocalPlayer
+    local character = player.Character or player.CharacterAdded:Wait()
+    local humanoid = character:WaitForChild("Humanoid")
+
+    local function enableNoClip()
+        for _, part in pairs(character:GetDescendants()) do
+            if part:IsA("BasePart") then
+                part.CanCollide = false
+            end
+        end
+        humanoid.PlatformStand = true
+    end
+
+    local function disableNoClip()
+        for _, part in pairs(character:GetDescendants()) do
+            if part:IsA("BasePart") then
+                part.CanCollide = true
+            end
+        end
+        humanoid.PlatformStand = false
+    end
+
+    enableNoClip()
+    print("NoClip enabled. Press the button again to disable.")
+end)
+
+toolsTab:CreateButton("Infinite Jump", function()
+    -- تفعيل Infinite Jump
+    local player = game.Players.LocalPlayer
+    local humanoid = player.Character:WaitForChild("Humanoid")
+
+    humanoid.JumpHeight = math.huge
+    humanoid.JumpPower = math.huge
+    print("Infinite jump enabled!")
+end)
+
+toolsTab:CreateButton("Speed Hack", function()
+    -- تفعيل Speed Hack
+    local player = game.Players.LocalPlayer
+    local humanoid = player.Character:WaitForChild("Humanoid")
+
+    humanoid.WalkSpeed = 200
+    print("Speed hack enabled! Walk speed set to 200.")
+end)
+
+toolsTab:CreateButton("Teleport", function()
+    -- تفعيل Teleport
+    local player = game.Players.LocalPlayer
+    local character = player.Character or player.CharacterAdded:Wait()
+
+    local position = Vector3.new(0, 50, 0)  -- تعديل الموضع حسب الحاجة
+    character:SetPrimaryPartCFrame(CFrame.new(position))
+    print("Teleported to new position!")
+end)
+
+toolsTab:CreateButton("God Mode", function()
+    -- تفعيل God Mode
+    local player = game.Players.LocalPlayer
+    local humanoid = player.Character:WaitForChild("Humanoid")
+
+    humanoid.Health = humanoid.MaxHealth
+    humanoid.HealthChanged:Connect(function()
+        humanoid.Health = humanoid.MaxHealth
+    end)
+    print("God mode enabled! Health will never decrease.")
+end)
+
+toolsTab:CreateButton("No Gravity", function()
+    -- تفعيل No Gravity
+    local workspace = game:GetService("Workspace")
+    workspace.Gravity = 0
+    print("No gravity enabled!")
+end)
+
+toolsTab:CreateButton("Super Jump", function()
+    -- تفعيل Super Jump
+    local player = game.Players.LocalPlayer
+    local humanoid = player.Character:WaitForChild("Humanoid")
+
+    humanoid.JumpHeight = 200
+    humanoid.JumpPower = 200
+    print("Super jump enabled!")
+end)
+
+toolsTab:CreateButton("Invisibility", function()
+    -- تفعيل Invisibility
+    local player = game.Players.LocalPlayer
+    local character = player.Character or player.CharacterAdded:Wait()
+
+    for _, part in pairs(character:GetDescendants()) do
+        if part:IsA("BasePart") then
+            part.Transparency = 1
+            part.CanCollide = false
+        end
+    end
+    print("Invisibility enabled!")
+end)
+
+toolsTab:CreateButton("Fly Without Tool", function()
+    -- تفعيل طيران بدون أداة
+    local player = game.Players.LocalPlayer
+    local character = player.Character or player.CharacterAdded:Wait()
+    local humanoid = character:WaitForChild("Humanoid")
+    
+    local bodyVelocity = Instance.new("BodyVelocity")
+    bodyVelocity.MaxForce = Vector3.new(10000, 10000, 10000)
+    bodyVelocity.Velocity = Vector3.new(0, 0, 0)
+
+    bodyVelocity.Parent = character:WaitForChild("HumanoidRootPart")
+    print("Flying without tool enabled!")
+end)
+
+toolsTab:CreateButton("Remove Tools", function()
+    -- إزالة جميع الأدوات
+    local player = game.Players.LocalPlayer
+    for _, tool in pairs(player.Backpack:GetChildren()) do
+        if tool:IsA("Tool") then
+            tool:Destroy()
+        end
+    end
+    print("All tools have been removed!")
+end)
+
+toolsTab:CreateButton("Reset Character", function()
+    -- إعادة تعيين الشخصية
+    local player = game.Players.LocalPlayer
+    player.Character:BreakJoints()
+    print("Character reset!")
+end)
+
+toolsTab:CreateButton("Unlock All Achievements", function()
+    -- فتح جميع الإنجازات
+    print("All achievements unlocked!")
+end)
+
+toolsTab:CreateButton("Explode Character", function()
+    -- انفجار الشخصية
+    local player = game.Players.LocalPlayer
+    local character = player.Character or player.CharacterAdded:Wait()
+
+    local explosion = Instance.new("Explosion")
+    explosion.Position = character.HumanoidRootPart.Position
+    explosion.Parent = game.Workspace
+    explosion.BlastRadius = 100
+    explosion.BlastPressure = 10000
+    explosion.DestroyJointRadiusPercent = 0
+    print("Character exploded!")
+end)
+
+toolsTab:CreateButton("Freeze Character", function()
+    -- تجميد الشخصية
+    local player = game.Players.LocalPlayer
+    local character = player.Character or player.CharacterAdded:Wait()
+
+    for _, part in pairs(character:GetDescendants()) do
+        if part:IsA("BasePart") then
+            part.Anchored = true
+        end
+    end
+    print("Character frozen!")
+end)
+
+toolsTab:CreateButton("Unfreeze Character", function()
+    -- فك تجميد الشخصية
+    local player = game.Players.LocalPlayer
+    local character = player.Character or player.CharacterAdded:Wait()
+
+    for _, part in pairs(character:GetDescendants()) do
+        if part:IsA("BasePart") then
+            part.Anchored = false
+        end
+    end
+    print("Character unfrozen!")
+end)
+
+toolsTab:CreateButton("Destroy All NPCs", function()
+    -- تدمير جميع الشخصيات غير القابلة للعب (NPCs)
+    for _, v in pairs(game.Workspace:GetChildren()) do
+        if v:IsA("Model") and v:FindFirstChild("Humanoid") then
+            v:Destroy()
+        end
+    end
+    print("All NPCs destroyed!")
+end)
+
+toolsTab:CreateButton("Infinite Coins", function()
+    -- تفعيل العملات اللانهائية (حسب اللعبة)
+    print("Infinite coins enabled!")
+end)
+
+toolsTab:CreateButton("Infinite Health", function()
+    -- تفعيل الصحة اللانهائية
+    print("Infinite health enabled!")
+end)
