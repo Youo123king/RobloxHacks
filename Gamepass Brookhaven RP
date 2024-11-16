@@ -1,0 +1,38 @@
+-- Star Prumim
+local PrumimStar = game.Workspace:WaitForChild("PrumimStar") -- تأكد من وجود الكائن في العمل
+PrumimStar.Position = Vector3.new(0, 100, 0)  -- تعيين موضع النجمة في مكان عالٍ
+
+-- زيادة سرعة السيارة
+local car = game.Workspace:WaitForChild("Car") -- تأكد من أن السيارة موجودة
+local speed = 200  -- السرعة المطلوبة للسيارة
+car.PrimaryPart = car:WaitForChild("HumanoidRootPart")
+car.HumanoidRootPart.CFrame = car.HumanoidRootPart.CFrame + car.HumanoidRootPart.CFrame.lookVector * speed
+
+-- تفعيل الأغاني داخل السيارة
+local sound = Instance.new("Sound")
+sound.SoundId = "rbxassetid://[ID الأغنية هنا]"  -- استبدل بـ ID الأغنية المطلوبة
+sound.Parent = car
+sound:Play()
+
+-- حرق البيوت
+local house = game.Workspace:WaitForChild("House") -- تأكد من وجود المنزل الذي تريد حرقه
+local fire = Instance.new("Fire")
+fire.Size = 10
+fire.Parent = house
+fire.Enabled = true
+
+-- شراء قصر (قصور)
+local mansion = Instance.new("Model")
+mansion.Name = "Mansion"
+mansion.Parent = game.Workspace
+local mansionPart = Instance.new("Part")
+mansionPart.Size = Vector3.new(100, 100, 100)
+mansionPart.Position = Vector3.new(0, 10, 0)
+mansionPart.Parent = mansion
+
+-- تفعيل النجمة ووقف الحركة
+PrumimStar.Anchored = true
+while true do
+    wait(0.5)
+    PrumimStar.CFrame = PrumimStar.CFrame * CFrame.Angles(0, math.rad(15), 0)  -- جعل النجمة تدور
+end
