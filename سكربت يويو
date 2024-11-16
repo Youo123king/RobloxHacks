@@ -1,0 +1,280 @@
+-- تحميل مكتبة Kova
+local library = loadstring(game:HttpGet("https://raw.githubusercontent.com/Youo123king/RobloxHacks/main/Kova.lua"))()
+
+-- إنشاء واجهة المستخدم (GUI)
+local window = library.CreateWindow("سكربتات يوسف🌟💥")
+
+-- القسم الأول: Home
+local homeTab = window:CreateTab("Home")
+homeTab:CreateLabel("اسم اللاعب: " .. game.Players.LocalPlayer.Name)
+homeTab:CreateLabel("عمره: 15")
+homeTab:CreateLabel("البلد: مصر")
+homeTab:CreateLabel("الهاك المستخدم: يمكنك الاختيار من الأدوات المختلفة")
+homeTab:CreateLabel("صانع السكربت: owner youssefgamingor")
+
+-- القسم الثاني: Player
+local playerTab = window:CreateTab("Player")
+playerTab:CreateSlider("Speed", 16, 500, 50, function(val)
+    game.Players.LocalPlayer.Character.Humanoid.WalkSpeed = val
+end)
+
+playerTab:CreateSlider("Jump", 50, 300, 50, function(val)
+    game.Players.LocalPlayer.Character.Humanoid.JumpHeight = val
+end)
+
+playerTab:CreateSlider("Fly Speed", 50, 300, 50, function(val)
+    -- تعديل سرعة الطيران
+end)
+
+playerTab:CreateToggle("Infinity Jump", function(state)
+    if state then
+        -- تفعيل Infinite Jump
+    else
+        -- إيقاف Infinite Jump
+    end
+end)
+
+playerTab:CreateToggle("ESP", function(state)
+    if state then
+        -- تفعيل ESP
+    else
+        -- إيقاف ESP
+    end
+end)
+
+playerTab:CreateToggle("X-ray", function(state)
+    if state then
+        -- تفعيل X-ray
+    else
+        -- إيقاف X-ray
+    end
+end)
+
+playerTab:CreateButton("Rejoin", function()
+    game:GetService("TeleportService"):Teleport(game.PlaceId, game.Players.LocalPlayer)
+end)
+
+-- القسم الثالث: Map Hacks
+local mapTab = window:CreateTab("Map Hacks")
+-- Brookhaven
+mapTab:CreateLabel("Brookhaven")
+mapTab:CreateButton("Hack 1", function()
+    loadstring(game:HttpGet("https://raw.githubusercontent.com/REDzHUB/REDzHUB/main/REDzHUB"))()
+end)
+
+mapTab:CreateButton("Hack 2", function()
+    -- تنفيذ السكربت الثاني لـ Brookhaven
+end)
+
+mapTab:CreateButton("Hack 3", function()
+    -- تنفيذ السكربت الثالث لـ Brookhaven
+end)
+
+-- Blox Fruit
+mapTab:CreateLabel("Blox Fruit")
+mapTab:CreateButton("Hack 1", function()
+    -- تنفيذ السكربت الخاص بـ Blox Fruit
+end)
+
+mapTab:CreateButton("Hack 2", function()
+    -- تنفيذ السكربت الثاني لـ Blox Fruit
+end)
+
+mapTab:CreateButton("Hack 3", function()
+    -- تنفيذ السكربت الثالث لـ Blox Fruit
+end)
+
+-- Tower of Hell
+mapTab:CreateLabel("Tower of Hell")
+mapTab:CreateButton("Hack 1", function()
+    -- تنفيذ السكربت الخاص بـ Tower of Hell
+end)
+
+-- Build a Boat
+mapTab:CreateLabel("Build a Boat")
+mapTab:CreateButton("Hack 1", function()
+    -- تنفيذ السكربت الخاص بـ Build a Boat
+end)
+
+mapTab:CreateButton("Hack 2", function()
+    -- تنفيذ السكربت الثاني لـ Build a Boat
+end)
+
+mapTab:CreateButton("Hack 3", function()
+    -- تنفيذ السكربت الثالث لـ Build a Boat
+end)
+
+-- Murder Mystery
+mapTab:CreateLabel("Murder Mystery")
+mapTab:CreateButton("Hack 1", function()
+    -- تنفيذ السكربت الخاص بـ Murder Mystery
+end)
+
+-- Avade
+mapTab:CreateLabel("Avade")
+mapTab:CreateButton("Hack 1", function()
+    -- تنفيذ السكربت الخاص بـ Avade
+end)
+
+-- King Legacy
+mapTab:CreateLabel("King Legacy")
+mapTab:CreateButton("Hack 1", function()
+    -- تنفيذ السكربت الخاص بـ King Legacy
+end)
+
+mapTab:CreateButton("Hack 2", function()
+    -- تنفيذ السكربت الثاني لـ King Legacy
+end)
+
+-- Adopt Me
+mapTab:CreateLabel("Adopt Me")
+mapTab:CreateButton("Hack 1", function()
+    -- تنفيذ السكربت الخاص بـ Adopt Me
+end)
+
+mapTab:CreateButton("Hack 2", function()
+    -- تنفيذ السكربت الثاني لـ Adopt Me
+end)
+
+mapTab:CreateButton("Hack 3", function()
+    -- تنفيذ السكربت الثالث لـ Adopt Me
+end)
+
+-- القسم الرابع: Hub
+local hubTab = window:CreateTab("Hub")
+hubTab:CreateButton("Script 1", function()
+    -- تنفيذ السكربت 1
+end)
+
+hubTab:CreateButton("Script 2", function()
+    -- تنفيذ السكربت 2
+end)
+
+hubTab:CreateButton("Script 3", function()
+    -- تنفيذ السكربت 3
+end)
+
+hubTab:CreateButton("Script 4", function()
+    -- تنفيذ السكربت 4
+end)
+
+hubTab:CreateButton("Script 5", function()
+    -- تنفيذ السكربت 5
+end)
+
+hubTab:CreateButton("Script 6", function()
+    -- تنفيذ السكربت 6
+end)
+
+hubTab:CreateButton("Script 7", function()
+    -- تنفيذ السكربت 7
+end)
+
+hubTab:CreateButton("Script 8", function()
+    -- تنفيذ السكربت 8
+end)
+
+hubTab:CreateButton("Script 9", function()
+    -- تنفيذ السكربت 9
+end)
+
+hubTab:CreateButton("Script 10", function()
+    -- تنفيذ السكربت 10
+end)
+
+-- القسم الخامس: Executed
+local executedTab = window:CreateTab("Executed")
+executedTab:CreateButton("Delta Hack", function()
+    -- تنفيذ Delta Hack
+end)
+
+executedTab:CreateButton("Codex Hack", function()
+    -- تنفيذ Codex Hack
+end)
+
+executedTab:CreateButton("Arceus X Hack", function()
+    -- تنفيذ Arceus X Hack
+end)
+
+executedTab:CreateButton("Hydrogen Hack", function()
+    -- تنفيذ Hydrogen Hack
+end)
+
+executedTab:CreateButton("Fulux Hack", function()
+    -- تنفيذ Fulux Hack
+end)
+
+executedTab:CreateButton("Adopt Hack", function()
+    -- تنفيذ Adopt Hack
+end)
+
+-- القسم السادس: Game
+local gameTab = window:CreateTab("Game")
+gameTab:CreateButton("Brookhaven", function()
+    -- دخول إلى Brookhaven
+end)
+
+gameTab:CreateButton("Adopt Me", function()
+    -- دخول إلى Adopt Me
+end)
+
+gameTab:CreateButton("King Legacy", function()
+    -- دخول إلى King Legacy
+end)
+
+gameTab:CreateButton("Blox Fruit", function()
+    -- دخول إلى Blox Fruit
+end)
+
+gameTab:CreateButton("Tower of Hell", function()
+    -- دخول إلى Tower of Hell
+end)
+
+gameTab:CreateButton("Avade", function()
+    -- دخول إلى Avade
+end)
+
+gameTab:CreateButton("Build a Boat", function()
+    -- دخول إلى Build a Boat
+end)
+
+-- القسم السابع: Owner
+local ownerTab = window:CreateTab("Owner")
+ownerTab:CreateLabel("اسم: youssefgamingor")
+ownerTab:CreateLabel("العمر: 15")
+ownerTab:CreateLabel("البلد: مصر")
+ownerTab:CreateLabel("ID السكن: 1234567")
+
+-- القسم الثامن: Tools
+local toolsTab = window:CreateTab("Tools")
+toolsTab:CreateButton("Btools", function()
+    -- تفعيل Btools
+end)
+
+toolsTab:CreateButton("FreeCam", function()
+    -- تفعيل FreeCam
+end)
+
+toolsTab:CreateButton("Fly Tool", function()
+    -- تفعيل Fly Tool
+end)
+
+toolsTab:CreateButton("NoClip", function()
+    -- تفعيل NoClip
+end)
+
+toolsTab:CreateButton("Infinite Jump", function()
+    -- تفعيل Infinite Jump
+end)
+
+toolsTab:CreateButton("Speed Hack", function()
+    -- تفعيل Speed Hack
+end)
+
+toolsTab:CreateButton("Teleport", function()
+    -- تفعيل Teleport
+end)
+
+toolsTab:CreateButton("God Mode", function()
+    -- تفعيل God Mode
+end)
