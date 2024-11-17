@@ -1,0 +1,145 @@
+-- إعداد واجهة المستخدم
+local ScreenGui = Instance.new("ScreenGui")
+local ToggleButton = Instance.new("TextButton")
+local MainFrame = Instance.new("Frame")
+
+-- إعداد الـ ScreenGui
+ScreenGui.Parent = game.CoreGui
+ScreenGui.Name = "OpaMenu"
+
+-- إعداد الزر لإظهار وإخفاء القائمة
+ToggleButton.Size = UDim2.new(0, 150, 0, 50)
+ToggleButton.Position = UDim2.new(0, 10, 0, 10)
+ToggleButton.Text = "Opa Script"
+ToggleButton.Parent = ScreenGui
+ToggleButton.BackgroundColor3 = Color3.fromRGB(0, 0, 0)
+ToggleButton.TextColor3 = Color3.fromRGB(255, 255, 255)
+ToggleButton.TextSize = 20
+ToggleButton.Font = Enum.Font.SourceSansBold
+
+-- إعداد القائمة
+MainFrame.Size = UDim2.new(0, 350, 0, 500)
+MainFrame.Position = UDim2.new(0.5, -175, 0.5, -250)
+MainFrame.BackgroundColor3 = Color3.fromRGB(25, 25, 25)
+MainFrame.Visible = false
+MainFrame.Parent = ScreenGui
+MainFrame.Active = true
+MainFrame.Draggable = true
+
+-- إظهار أو إخفاء القائمة عند الضغط على الزر
+ToggleButton.MouseButton1Click:Connect(function()
+    MainFrame.Visible = not MainFrame.Visible
+end)
+
+-- إضافة عنوان للقائمة
+local Title = Instance.new("TextLabel")
+Title.Size = UDim2.new(1, 0, 0, 50)
+Title.Position = UDim2.new(0, 0, 0, 0)
+Title.BackgroundColor3 = Color3.fromRGB(50, 50, 50)
+Title.Text = "Hacks Youo ⚡🇪🇬💥"
+Title.TextColor3 = Color3.fromRGB(255, 255, 255)
+Title.TextSize = 20
+Title.Font = Enum.Font.SourceSansBold
+Title.Parent = MainFrame
+
+-- وظائف القسم الأول (Player)
+local function createButton(text, position, callback)
+    local Button = Instance.new("TextButton")
+    Button.Size = UDim2.new(0, 300, 0, 50)
+    Button.Position = position
+    Button.Text = text
+    Button.BackgroundColor3 = Color3.fromRGB(0, 100, 200)
+    Button.TextColor3 = Color3.fromRGB(255, 255, 255)
+    Button.TextSize = 18
+    Button.Font = Enum.Font.SourceSansBold
+    Button.Parent = MainFrame
+    Button.MouseButton1Click:Connect(callback)
+    return Button
+end
+
+-- وظائف الطيران
+createButton("Fly", UDim2.new(0, 25, 0, 70), function()
+    loadstring(game:HttpGet("https://pastebin.com/raw/6aW1zjvQ"))()
+end)
+
+-- وظائف السرعة
+createButton("Speed", UDim2.new(0, 25, 0, 140), function()
+    game.Players.LocalPlayer.Character.Humanoid.WalkSpeed = 100
+end)
+
+-- وظائف القفز العالي
+createButton("Jump", UDim2.new(0, 25, 0, 210), function()
+    game.Players.LocalPlayer.Character.Humanoid.JumpPower = 150
+end)
+
+-- قفزة لا نهائية
+createButton("Infinity Jump", UDim2.new(0, 25, 0, 280), function()
+    game:GetService("UserInputService").JumpRequest:connect(function()
+        game.Players.LocalPlayer.Character:FindFirstChildOfClass('Humanoid'):ChangeState("Jumping")
+    end)
+end)
+
+-- إظهار اللاعبين ESP
+createButton("ESP", UDim2.new(0, 25, 0, 350), function()
+    loadstring(game:HttpGet("https://pastebin.com/raw/KpN5Ge5v"))()
+end)
+
+-- التحكم في إعادة الدخول إلى اللعبة
+createButton("Rejoin", UDim2.new(0, 25, 0, 420), function()
+    game:GetService("TeleportService"):Teleport(game.PlaceId, game.Players.LocalPlayer)
+end)
+
+-- تغيير الوقت إلى النهار
+createButton("Day", UDim2.new(0, 25, 0, 490), function()
+    game.Lighting.TimeOfDay = "12:00:00"
+end)
+
+-- تغيير الوقت إلى الليل
+createButton("Night", UDim2.new(0, 25, 0, 560), function()
+    game.Lighting.TimeOfDay = "00:00:00"
+end)
+
+-- القسم الثاني (المابات)
+local MapsLabel = Instance.new("TextLabel")
+MapsLabel.Size = UDim2.new(1, 0, 0, 50)
+MapsLabel.Position = UDim2.new(0, 0, 0, 630)
+MapsLabel.BackgroundColor3 = Color3.fromRGB(50, 50, 50)
+MapsLabel.Text = "المابات"
+MapsLabel.TextColor3 = Color3.fromRGB(255, 255, 255)
+MapsLabel.TextSize = 20
+MapsLabel.Font = Enum.Font.SourceSansBold
+MapsLabel.Parent = MainFrame
+
+-- تفعيل هاكات للمابات
+createButton("Brookhaven", UDim2.new(0, 25, 0, 700), function()
+    print("Brookhaven Hack Loaded")
+end)
+
+createButton("Blox Fruit", UDim2.new(0, 25, 0, 770), function()
+    print("Blox Fruit Hack Loaded")
+end)
+
+-- القسم الثالث (الهابات)
+createButton("Delta", UDim2.new(0, 25, 0, 840), function()
+    loadstring(game:HttpGet("https://raw.githubusercontent.com/some-script"))()
+end)
+
+-- القسم الرابع (تعذيب اللاعبين)
+createButton("Control Player", UDim2.new(0, 25, 0, 910), function()
+    print("Control Player Activated")
+end)
+
+createButton("Bring Player", UDim2.new(0, 25, 0, 980), function()
+    print("Bring Player Activated")
+end)
+
+-- خانة صانع السكربت
+local Credits = Instance.new("TextLabel")
+Credits.Size = UDim2.new(1, 0, 0, 50)
+Credits.Position = UDim2.new(0, 0, 0, 1050)
+Credits.BackgroundColor3 = Color3.fromRGB(50, 50, 50)
+Credits.Text = "صانع السكربت: Youo"
+Credits.TextColor3 = Color3.fromRGB(255, 255, 255)
+Credits.TextSize = 20
+Credits.Font = Enum.Font.SourceSansBold
+Credits.Parent = MainFrame
