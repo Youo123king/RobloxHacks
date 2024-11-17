@@ -1,0 +1,99 @@
+-- تحميل مكتبة Kavo
+local Library = loadstring(game:HttpGet("https://raw.githubusercontent.com/xHeptc/Kavo-UI-Library/main/source.lua"))()
+local Window = Library.CreateLib("Hacks youo⚡🇪🇬💥", "DarkTheme")
+
+-- القسم الأول: Player
+local PlayerTab = Window:NewTab("Player")
+local PlayerSection = PlayerTab:NewSection("Player Hacks")
+
+PlayerSection:NewButton("Fly", "Fly around", function()
+    loadstring(game:HttpGet("https://raw.githubusercontent.com/Youo123king/RobloxHacks/main/fly.lua"))()
+end)
+
+PlayerSection:NewSlider("WalkSpeed", "Adjust speed", 300, 16, function(value)
+    game.Players.LocalPlayer.Character.Humanoid.WalkSpeed = value
+end)
+
+PlayerSection:NewSlider("JumpPower", "Adjust jump power", 200, 50, function(value)
+    game.Players.LocalPlayer.Character.Humanoid.JumpPower = value
+end)
+
+PlayerSection:NewToggle("Infinity Jump", "Enable infinite jump", function(state)
+    _G.InfJump = state
+    game:GetService("UserInputService").JumpRequest:Connect(function()
+        if _G.InfJump then
+            game.Players.LocalPlayer.Character:FindFirstChildOfClass('Humanoid'):ChangeState("Jumping")
+        end
+    end)
+end)
+
+PlayerSection:NewButton("ESP", "Enable ESP", function()
+    loadstring(game:HttpGet("https://raw.githubusercontent.com/Youo123king/RobloxHacks/main/esp.lua"))()
+end)
+
+PlayerSection:NewButton("Rejoin", "Rejoin the game", function()
+    game:GetService("TeleportService"):Teleport(game.PlaceId, game.Players.LocalPlayer)
+end)
+
+PlayerSection:NewButton("Day", "Set time to day", function()
+    game.Lighting.TimeOfDay = "14:00:00"
+end)
+
+PlayerSection:NewButton("Night", "Set time to night", function()
+    game.Lighting.TimeOfDay = "00:00:00"
+end)
+
+-- القسم الثاني: Games
+local GamesTab = Window:NewTab("Games")
+local GamesSection = GamesTab:NewSection("Game Hacks")
+
+GamesSection:NewButton("Brookhaven", "Load Brookhaven script", function()
+    loadstring(game:HttpGet("https://raw.githubusercontent.com/Youo123king/RobloxHacks/main/brookhaven.lua"))()
+end)
+
+GamesSection:NewButton("Blox Fruit", "Load Blox Fruit script", function()
+    loadstring(game:HttpGet("https://raw.githubusercontent.com/Youo123king/RobloxHacks/main/bloxfruit.lua"))()
+end)
+
+GamesSection:NewButton("King Legacy", "Load King Legacy script", function()
+    loadstring(game:HttpGet("https://raw.githubusercontent.com/Youo123king/RobloxHacks/main/kinglegacy.lua"))()
+end)
+
+-- القسم الثالث: Hubs
+local HubsTab = Window:NewTab("Hubs")
+local HubsSection = HubsTab:NewSection("Hack Hubs")
+
+HubsSection:NewButton("Delta Executor", "Load Delta Hub", function()
+    loadstring(game:HttpGet("https://raw.githubusercontent.com/Youo123king/RobloxHacks/main/delta.lua"))()
+end)
+
+HubsSection:NewButton("Arceus X", "Load Arceus X Hub", function()
+    loadstring(game:HttpGet("https://raw.githubusercontent.com/Youo123king/RobloxHacks/main/arceus.lua"))()
+end)
+
+-- القسم الرابع: Player Control
+local ControlTab = Window:NewTab("Player Control")
+local ControlSection = ControlTab:NewSection("Control Players")
+
+ControlSection:NewButton("Control Player", "Control a player", function()
+    loadstring(game:HttpGet("https://raw.githubusercontent.com/Youo123king/RobloxHacks/main/controlplayer.lua"))()
+end)
+
+ControlSection:NewButton("Fling Player", "Fling players around", function()
+    loadstring(game:HttpGet("https://raw.githubusercontent.com/Youo123king/RobloxHacks/main/fling.lua"))()
+end)
+
+-- القسم الخامس: Credits
+local CreditsTab = Window:NewTab("Credits")
+local CreditsSection = CreditsTab:NewSection("Made by Youo")
+
+CreditsSection:NewLabel("Script made by Youo⚡🇪🇬💥")
+
+-- إضافة زر إخفاء/إظهار القائمة
+local ToggleButton = Window:NewTab("Toggle")
+local ToggleSection = ToggleButton:NewSection("UI Toggle")
+
+-- الزر الآن مكتوب عليه "OPA Script"
+ToggleSection:NewButton("OPA Script", "Hide or Show the menu", function()
+    Library:ToggleUI()
+end)
