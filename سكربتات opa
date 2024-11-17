@@ -1,0 +1,131 @@
+--[[
+    Script by Youo ⚡🇪🇬💥
+    Hacks youo
+]]
+
+-- إنشاء واجهة GUI
+local ScreenGui = Instance.new("ScreenGui")
+local MainFrame = Instance.new("Frame")
+local ToggleButton = Instance.new("TextButton")
+local PlayerTab = Instance.new("ScrollingFrame")
+local MapsTab = Instance.new("ScrollingFrame")
+local HubTab = Instance.new("ScrollingFrame")
+local PlayerTrollTab = Instance.new("ScrollingFrame")
+local CreditsTab = Instance.new("Frame")
+
+-- إعداد الألوان والتصميم
+ScreenGui.Parent = game.CoreGui
+MainFrame.Size = UDim2.new(0, 300, 0, 400)
+MainFrame.Position = UDim2.new(0.5, -150, 0.5, -200)
+MainFrame.BackgroundColor3 = Color3.fromRGB(30, 30, 30)
+MainFrame.Visible = true
+MainFrame.Active = true
+MainFrame.Draggable = true
+
+-- زر إظهار/إخفاء
+ToggleButton.Parent = ScreenGui
+ToggleButton.Size = UDim2.new(0, 100, 0, 40)
+ToggleButton.Position = UDim2.new(0, 10, 0, 10)
+ToggleButton.Text = "Toggle Menu"
+ToggleButton.BackgroundColor3 = Color3.fromRGB(50, 50, 50)
+ToggleButton.MouseButton1Click:Connect(function()
+    MainFrame.Visible = not MainFrame.Visible
+end)
+
+-- إنشاء أزرار
+local function createButton(parent, text, onClick)
+    local button = Instance.new("TextButton")
+    button.Parent = parent
+    button.Size = UDim2.new(0, 250, 0, 40)
+    button.Text = text
+    button.BackgroundColor3 = Color3.fromRGB(60, 60, 60)
+    button.TextColor3 = Color3.fromRGB(255, 255, 255)
+    button.MouseButton1Click:Connect(onClick)
+end
+
+-- تبويب اللاعب
+PlayerTab.Parent = MainFrame
+PlayerTab.Size = UDim2.new(0, 280, 0, 350)
+PlayerTab.Position = UDim2.new(0, 10, 0, 10)
+createButton(PlayerTab, "Fly", function()
+    loadstring(game:HttpGet("https://pastebin.com/raw/flyScript"))()
+end)
+createButton(PlayerTab, "Speed", function()
+    game.Players.LocalPlayer.Character.Humanoid.WalkSpeed = 100
+end)
+createButton(PlayerTab, "Jump", function()
+    game.Players.LocalPlayer.Character.Humanoid.JumpPower = 150
+end)
+createButton(PlayerTab, "Infinity Jump", function()
+    game:GetService("UserInputService").JumpRequest:Connect(function()
+        game.Players.LocalPlayer.Character:FindFirstChildOfClass("Humanoid"):ChangeState("Jumping")
+    end)
+end)
+createButton(PlayerTab, "ESP", function()
+    loadstring(game:HttpGet("https://pastebin.com/raw/espScript"))()
+end)
+createButton(PlayerTab, "Rejoin", function()
+    game:GetService("TeleportService"):Teleport(game.PlaceId, game.Players.LocalPlayer)
+end)
+createButton(PlayerTab, "Day", function()
+    game.Lighting.ClockTime = 14
+end)
+createButton(PlayerTab, "Night", function()
+    game.Lighting.ClockTime = 0
+end)
+
+-- تبويب المابات
+MapsTab.Parent = MainFrame
+MapsTab.Size = UDim2.new(0, 280, 0, 350)
+MapsTab.Position = UDim2.new(0, 10, 0, 10)
+local maps = {"Brookhaven", "Blox Fruit", "King Legacy", "Hell of Tower", "Evad", "Clone Tycoon", "Build a Boat", "Murder Mystery"}
+for _, map in pairs(maps) do
+    createButton(MapsTab, map, function()
+        print("Loading " .. map .. " script...")
+    end)
+end
+
+-- تبويب الـ Hubs
+HubTab.Parent = MainFrame
+HubTab.Size = UDim2.new(0, 280, 0, 350)
+HubTab.Position = UDim2.new(0, 10, 0, 10)
+local hubs = {"Delta", "Arceus X", "Fluxus", "Codex", "Hydrogen"}
+for _, hub in pairs(hubs) do
+    createButton(HubTab, hub, function()
+        print("Loading " .. hub .. " script...")
+    end)
+end
+
+-- تبويب عذاب اللاعبين
+PlayerTrollTab.Parent = MainFrame
+PlayerTrollTab.Size = UDim2.new(0, 280, 0, 350)
+PlayerTrollTab.Position = UDim2.new(0, 10, 0, 10)
+createButton(PlayerTrollTab, "Control Player", function()
+    print("Control Player feature activated")
+end)
+createButton(PlayerTrollTab, "Bring", function()
+    print("Bringing player...")
+end)
+createButton(PlayerTrollTab, "Fling", function()
+    print("Flinging player...")
+end)
+createButton(PlayerTrollTab, "Tp Player", function()
+    print("Teleporting player...")
+end)
+createButton(PlayerTrollTab, "Hide Sit", function()
+    print("Hiding player...")
+end)
+
+-- تبويب صانع السكربت
+CreditsTab.Parent = MainFrame
+CreditsTab.Size = UDim2.new(0, 280, 0, 50)
+CreditsTab.Position = UDim2.new(0, 10, 0, 360)
+local creditsLabel = Instance.new("TextLabel")
+creditsLabel.Parent = CreditsTab
+creditsLabel.Size = UDim2.new(1, 0, 0, 50)
+creditsLabel.Text = "Script by Youo ⚡🇪🇬💥"
+creditsLabel.TextColor3 = Color3.fromRGB(255, 255, 255)
+creditsLabel.BackgroundTransparency = 1
+
+-- عرض رسالة النجاح
+print("Hacks youo⚡🇪🇬💥 Script Loaded Successfully!")
