@@ -1,0 +1,60 @@
+-- سكربت طيران يويو
+local player = game.Players.LocalPlayer
+local mouse = player:GetMouse()
+local character = player.Character or player.CharacterAdded:Wait()
+local humanoidRootPart = character:WaitForChild("HumanoidRootPart")
+
+-- إعدادات
+local flying = false
+local speed = 50
+local UIS = game:GetService("UserInputService")
+local RunService = game:GetService("RunService")
+
+-- فيكتور الاتجاه
+local direction = Vector3.new()
+
+-- دالة التحديث
+local function updateDirection()
+	direction = Vector3.new(
+		(mouse.W and 1 or 0) - (mouse.S and 1 or 0),
+		(mouse.Space and 1 or 0) - (mouse.LeftShift and 1 or 0),
+		(mouse.D and 1 or 0) - (mouse.A and 1 or 0)
+	)
+end
+
+-- بدء الطيران
+local function startFlying()
+	if flying then return end
+	flying = true
+
+	local bodyVelocity = Instance.new("BodyVelocity")
+	bodyVelocity.Name = "YoyoFly"
+	bodyVelocity.MaxForce = Vector3.new(1e5, 1e5, 1e5)
+	bodyVelocity.Velocity = Vector3.zero
+	bodyVelocity.Parent = humanoidRootPart
+
+	RunService.RenderStepped:Connect(function()
+		if flying then
+			updateDirection()
+			bodyVelocity.Velocity = (workspace.CurrentCamera.CFrame:VectorToWorldSpace(direction)).Unit * speed
+		end
+	end)
+end
+
+-- إيقاف الطيران
+local function stopFlying()
+	flying = false
+	local bv = humanoidRootPart:FindFirstChild("YoyoFly")
+	if bv then bv:Destroy() end
+end
+
+-- مفاتيح التحكم
+UIS.InputBegan:Connect(function(input)
+	if input.KeyCode == Enum.KeyCode.F then
+		if flying then stopFlying() else startFlying() end
+	elseif input.KeyCode == Enum.KeyCode.Equals then
+		speed = speed + 10
+	elseif input.KeyCode == Enum.KeyCode.Minus then
+		speed = math.max(10, speed - 10)
+	end
+end)
